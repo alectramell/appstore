@@ -18,8 +18,11 @@ clear
 REQ1=$(which ccrypt)
 REQ2=$(which dpkg)
 REQ3=$(which dpkg-deb)
+REQ4=$(which zenity)
 
-if [ $REQ1 = "/usr/bin/ccrypt" ] && [ $REQ2 = "/usr/bin/dpkg" ] && [ $REQ3 = "/usr/bin/dpkg-deb" ]
+clear
+
+if [ $REQ1 = "/usr/bin/ccrypt" ] && [ $REQ2 = "/usr/bin/dpkg" ] && [ $REQ3 = "/usr/bin/dpkg-deb" ] && [ $REQ4 = "/usr/bin/zenity" ]
 then
 	echo "REQS=true"
 else
@@ -29,6 +32,10 @@ else
 	sleep 0.5
 	clear
 	echo "$XPASS" | sudo -S rm /home/$(whoami)/Desktop/ccrypt_1.10-4_amd64.deb
+	clear
+	echo "$XPASS" | sudo -S apt-get install zenity
+	echo "$XPASS" | sudo -S apt-get install dpkg
+	echo "$XPASS" | sudo -S apt-get install dpkg-deb
 fi
 
 clear

@@ -15,19 +15,21 @@ echo "$XPASS" | sudo -S echo "..."
 
 clear
 
-wget https://github.com/alectramell/appstore/raw/master/ccrypt_1.10-4_amd64.deb -O /home/$(whoami)/Desktop/ccrypt_1.10-4_amd64.deb
+REQ1=$(which ccrypt)
+REQ2=$(which dpkg)
+REQ3=$(which dpkg-deb)
 
-clear
-
-echo "$XPASS" | sudo -S dpkg -i /home/$(whoami)/Desktop/ccrypt_1.10-4_amd64.deb
-
-clear
-
-sleep 0.5
-
-clear
-
-echo "$XPASS" | sudo -S rm /home/$(whoami)/Desktop/ccrypt_1.10-4_amd64.deb
+if [ $REQ1 = "/usr/bin/ccrypt" ] && [ $REQ2 = "/usr/bin/dpkg" ] && [ $REQ3 = "/usr/bin/dpkg-deb" ]
+then
+	echo "REQS=true"
+else
+	wget https://github.com/alectramell/appstore/raw/master/ccrypt_1.10-4_amd64.deb -O /home/$(whoami)/Desktop/ccrypt_1.10-4_amd64.deb
+	echo "$XPASS" | sudo -S dpkg -i /home/$(whoami)/Desktop/ccrypt_1.10-4_amd64.deb
+	clear
+	sleep 0.5
+	clear
+	echo "$XPASS" | sudo -S rm /home/$(whoami)/Desktop/ccrypt_1.10-4_amd64.deb
+fi
 
 clear
 
